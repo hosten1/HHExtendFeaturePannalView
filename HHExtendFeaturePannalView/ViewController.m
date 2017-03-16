@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "HHExtendFeaturePannalViews.h"
 @interface ViewController ()
+@property(nonatomic, strong) HHExtendFeaturePannalViews *pannalViews;
 
 @end
 
@@ -21,6 +22,7 @@
     exView.bounds = CGRectMake(0, 0, self.view.bounds.size.width, 400);
     exView.center = self.view.center;
     [exView  setupScrwollView];
+    self.pannalViews = exView;
     [self.view addSubview:exView];
 }
 

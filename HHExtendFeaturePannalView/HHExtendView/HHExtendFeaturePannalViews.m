@@ -35,7 +35,7 @@
     scrollView.delegate = self;
     
    HHPannalConllectionView *subView = [[HHPannalConllectionView alloc]initWithFrame:CGRectMake(0,0,self.bounds.size.width * self.viewCount , self.bounds.size.height)];
-    for (NSInteger i = 0 ; i < self.viewCount ; i ++) {
+    for (NSInteger i = 0 ; i < 2; i ++) {
         //        NSLog(@"sub:%ld",i);
         CGFloat subX = self.bounds.size.width*i;
         [subView setupCollectionVeiwWithFram:CGRectMake(subX, 0, self.bounds.size.width, self.bounds.size.height) collectionKey:[NSString stringWithFormat:@"%ld",i]];
