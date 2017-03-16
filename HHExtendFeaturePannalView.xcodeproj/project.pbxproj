@@ -18,6 +18,7 @@
 		6D70A8181E7A3D0C002EAF2F /* HHPannalConllectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D70A8171E7A3D0C002EAF2F /* HHPannalConllectionView.m */; };
 		6D70A81C1E7A3DCE002EAF2F /* HHPannalCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D70A81A1E7A3DCE002EAF2F /* HHPannalCollectionViewCell.m */; };
 		6D70A81D1E7A3DCE002EAF2F /* HHPannalCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D70A81B1E7A3DCE002EAF2F /* HHPannalCollectionViewCell.xib */; };
+		6D70A81F1E7A4B3C002EAF2F /* portrait@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D70A81E1E7A4B3C002EAF2F /* portrait@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		6D70A8191E7A3DCE002EAF2F /* HHPannalCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HHPannalCollectionViewCell.h; sourceTree = "<group>"; };
 		6D70A81A1E7A3DCE002EAF2F /* HHPannalCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHPannalCollectionViewCell.m; sourceTree = "<group>"; };
 		6D70A81B1E7A3DCE002EAF2F /* HHPannalCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HHPannalCollectionViewCell.xib; sourceTree = "<group>"; };
+		6D70A81E1E7A4B3C002EAF2F /* portrait@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "portrait@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 				6D70A8191E7A3DCE002EAF2F /* HHPannalCollectionViewCell.h */,
 				6D70A81A1E7A3DCE002EAF2F /* HHPannalCollectionViewCell.m */,
 				6D70A81B1E7A3DCE002EAF2F /* HHPannalCollectionViewCell.xib */,
+				6D70A81E1E7A4B3C002EAF2F /* portrait@2x.png */,
 			);
 			path = HHExtendView;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 			files = (
 				6D70A81D1E7A3DCE002EAF2F /* HHPannalCollectionViewCell.xib in Resources */,
 				6D70A7E91E7A16A6002EAF2F /* LaunchScreen.storyboard in Resources */,
+				6D70A81F1E7A4B3C002EAF2F /* portrait@2x.png in Resources */,
 				6D70A7E61E7A16A5002EAF2F /* Assets.xcassets in Resources */,
 				6D70A7E41E7A16A5002EAF2F /* Main.storyboard in Resources */,
 			);

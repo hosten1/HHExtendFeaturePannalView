@@ -12,43 +12,43 @@ static NSString *const KPannalViewCellID = @"PannalViewCellID";
 static NSInteger KHeaderCollectionViewHeight = 150;
 
 @interface HHPannalConllectionView ()<UICollectionViewDelegate,UICollectionViewDataSource>
-
+@property(nonatomic, strong) NSMutableDictionary *collectionViews;
 @end
 
 @implementation HHPannalConllectionView
-
+-(NSMutableDictionary *)collectionViews{
+    if (!_collectionViews) {
+        _collectionViews = [[NSMutableDictionary alloc]init];
+    }
+    return _collectionViews;
+}
 -(void)setupCollectionVeiwWithFram:(CGRect)subFrame collectionKey:(NSString *)key{
-    //创建一个layout布局类
     UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc]init];
     //设置布局方向为垂直流布局
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-    //设置每个item的大小为100*100
-    layout.itemSize = CGSizeMake(100, 100);
     //创建collectionView 通过一个布局策略layout来创建
     UICollectionView * collect = [[UICollectionView alloc]initWithFrame:subFrame collectionViewLayout:layout];
-    //代理设置
     collect.delegate=self;
     collect.dataSource=self;
-    //注册item类型 这里使用系统的类型
-//    [collect registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cellid"];
     [collect registerNib:[UINib nibWithNibName:@"HHPannalCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:KPannalViewCellID];
     [self addSubview:collect];
+    if (self.collectionViews) {
+        [self.collectionViews setObject:@[collect] forKey:key];
+    }
 }
 
 
 
-//返回分区个数
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     return 1;
 }
-//返回每个分区的item个数
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return 6;
 }
-//返回每个item
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     HHPannalCollectionViewCell * cell  = [collectionView dequeueReusableCellWithReuseIdentifier:KPannalViewCellID forIndexPath:indexPath];
     cell.backgroundColor = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:1];
+    [cell setImage:[UIImage imageNamed:@"portrait@2x"] title:[NSString stringWithFormat:@"%ld__%ld",indexPath.section,indexPath.row]];
     return cell;
 }
 #pragma mark --UICollectionViewDelegateFlowLayout

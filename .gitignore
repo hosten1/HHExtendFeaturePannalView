@@ -36,3 +36,5 @@ Build/Products/Debug-iphoneos/HHExtendFeaturePannalView.app/HHExtendFeaturePanna
 *.o
 
 Build/Intermediates/HHExtendFeaturePannalView.build/Debug-iphoneos/HHExtendFeaturePannalView.build/Objects-normal/arm64/HHExtendFeaturePannalViews.o
+
+*.png

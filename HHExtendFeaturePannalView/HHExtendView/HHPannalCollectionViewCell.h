@@ -10,4 +10,5 @@
 
 @interface HHPannalCollectionViewCell : UICollectionViewCell
 
+- (void)setImage:(UIImage*)img title:(NSString*)title;
 @end
