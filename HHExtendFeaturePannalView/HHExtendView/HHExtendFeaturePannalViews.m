@@ -7,6 +7,7 @@
 //
 
 #import "HHExtendFeaturePannalViews.h"
+#import "HHPannalConllectionView.h"
 
 @interface HHExtendFeaturePannalViews ()<UIScrollViewDelegate>
 @property(nonatomic, strong) UIScrollView *scrowllView;
@@ -33,13 +34,11 @@
     scrollView.showsVerticalScrollIndicator = NO;
     scrollView.delegate = self;
     
-   UIView *subView = [[UIView alloc]initWithFrame:CGRectMake(0,0,self.bounds.size.width * self.viewCount , self.bounds.size.height)];
+   HHPannalConllectionView *subView = [[HHPannalConllectionView alloc]initWithFrame:CGRectMake(0,0,self.bounds.size.width * self.viewCount , self.bounds.size.height)];
     for (NSInteger i = 0 ; i < self.viewCount ; i ++) {
         //        NSLog(@"sub:%ld",i);
-       
-        
-        subView.tag = 2000+i;
-     
+        CGFloat subX = self.bounds.size.width*i;
+        [subView setupCollectionVeiwWithFram:CGRectMake(subX, 0, self.bounds.size.width, self.bounds.size.height) collectionKey:[NSString stringWithFormat:@"%ld",i]];
     }
     [scrollView addSubview:subView];
     CGFloat pageCW= 60;
@@ -57,7 +56,7 @@
     [self  addSubview: pageConteol];
     self.scrowllView = scrollView;
     self.pageConteol = pageConteol;
-
+    self.scrowllView.backgroundColor = [UIColor redColor];
 }
 
 #pragma mark - UIScrollViewDelegate
