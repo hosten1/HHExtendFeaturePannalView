@@ -13,6 +13,8 @@ static NSInteger KHeaderCollectionViewHeight = 150;
 
 @interface HHPannalConllectionView ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property(nonatomic, strong) NSMutableDictionary *collectionViews;
+@property(nonatomic, assign) CGRect superFrame;
+
 @end
 
 @implementation HHPannalConllectionView
@@ -23,6 +25,7 @@ static NSInteger KHeaderCollectionViewHeight = 150;
     return _collectionViews;
 }
 -(void)setupCollectionVeiwWithFram:(CGRect)subFrame collectionKey:(NSString *)key{
+    self.superFrame = subFrame;
     UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc]init];
     //设置布局方向为垂直流布局
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
@@ -43,7 +46,7 @@ static NSInteger KHeaderCollectionViewHeight = 150;
     return 1;
 }
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 6;
+    return 8;
 }
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     HHPannalCollectionViewCell * cell  = [collectionView dequeueReusableCellWithReuseIdentifier:KPannalViewCellID forIndexPath:indexPath];
@@ -56,7 +59,8 @@ static NSInteger KHeaderCollectionViewHeight = 150;
 //定义每个Item 的大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake(KHeaderCollectionViewHeight*0.6, KHeaderCollectionViewHeight*0.6);
+    CGFloat cellW = (self.superFrame.size.width-5*10)/4;
+    return CGSizeMake(cellW, cellW+10);
 }
 
 //定义每个UICollectionView 的 margin

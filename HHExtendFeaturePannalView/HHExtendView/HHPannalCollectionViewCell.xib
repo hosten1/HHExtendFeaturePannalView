@@ -19,14 +19,14 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kaK-O8-Pzv">
-                        <rect key="frame" x="22.5" y="9" width="55" height="55"/>
+                        <rect key="frame" x="22.5" y="14" width="55" height="55"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="55" id="Wz2-dC-g3G"/>
                             <constraint firstAttribute="height" constant="55" id="v20-5x-SXD"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="test" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y3E-Jh-8YD">
-                        <rect key="frame" x="0.0" y="74" width="100" height="21"/>
+                        <rect key="frame" x="0.0" y="79" width="100" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="st4-Vg-ulV"/>
                         </constraints>
@@ -41,7 +41,7 @@
                 <constraint firstAttribute="trailing" secondItem="y3E-Jh-8YD" secondAttribute="trailing" id="TZq-dC-3rl"/>
                 <constraint firstItem="y3E-Jh-8YD" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="f4Z-pi-LKW"/>
                 <constraint firstItem="y3E-Jh-8YD" firstAttribute="top" secondItem="kaK-O8-Pzv" secondAttribute="bottom" constant="10" id="iWG-mY-qJQ"/>
-                <constraint firstAttribute="bottom" secondItem="y3E-Jh-8YD" secondAttribute="bottom" constant="5" id="oVD-G7-PRP"/>
+                <constraint firstAttribute="bottom" secondItem="y3E-Jh-8YD" secondAttribute="bottom" id="oVD-G7-PRP"/>
             </constraints>
             <connections>
                 <outlet property="iconImageView" destination="kaK-O8-Pzv" id="4YF-Ut-io5"/>

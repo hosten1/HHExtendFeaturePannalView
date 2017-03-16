@@ -13,6 +13,7 @@
 @property(nonatomic, strong) UIScrollView *scrowllView;
 @property(nonatomic, strong) UIPageControl *pageConteol;
 @property(nonatomic, assign) NSInteger viewCount;
+@property(nonatomic, strong) HHPannalConllectionView *subView;
 @end
 @implementation HHExtendFeaturePannalViews
 
@@ -35,6 +36,7 @@
     scrollView.delegate = self;
     
    HHPannalConllectionView *subView = [[HHPannalConllectionView alloc]initWithFrame:CGRectMake(0,0,self.bounds.size.width * self.viewCount , self.bounds.size.height)];
+    self.subView = subView;
     for (NSInteger i = 0 ; i < 2; i ++) {
         //        NSLog(@"sub:%ld",i);
         CGFloat subX = self.bounds.size.width*i;

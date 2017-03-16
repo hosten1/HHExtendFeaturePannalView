@@ -19,7 +19,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     HHExtendFeaturePannalViews *exView = [[HHExtendFeaturePannalViews alloc]init];
-    exView.bounds = CGRectMake(0, 0, self.view.bounds.size.width, 400);
+    exView.bounds = CGRectMake(0, 0, self.view.bounds.size.width,250);
     exView.center = self.view.center;
     [exView  setupScrwollView];
     self.pannalViews = exView;
