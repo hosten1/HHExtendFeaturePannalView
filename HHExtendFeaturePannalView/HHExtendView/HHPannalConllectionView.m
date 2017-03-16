@@ -74,10 +74,13 @@ static NSInteger KHeaderCollectionViewHeight = 150;
 //UICollectionView被选中时调用的方法
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    [self.collectionViews enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+        if (collectionView == [obj firstObject]) {
+            NSLog(@"row=======%ld\n\t section:=======%@",indexPath.row,key);
+            *stop = YES;
+        }
+    }];
     UICollectionViewCell * cell = (UICollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
     cell.backgroundColor = [UIColor greenColor];
-    NSLog(@"item======%ld",indexPath.item);
-    NSLog(@"row=======%ld",indexPath.row);
-    NSLog(@"section===%ld",indexPath.section);
 }
 @end
