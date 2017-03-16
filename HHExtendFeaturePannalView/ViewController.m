@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-
+#import "HHExtendFeaturePannalViews.h"
 @interface ViewController ()
 
 @end
@@ -17,6 +17,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    HHExtendFeaturePannalViews *exView = [[HHExtendFeaturePannalViews alloc]init];
+    exView.bounds = CGRectMake(0, 0, self.view.bounds.size.width, 400);
+    exView.center = self.view.center;
+    [exView  setupScrwollView];
+    [self.view addSubview:exView];
 }
 
 

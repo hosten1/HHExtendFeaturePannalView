@@ -14,6 +14,7 @@
 		6D70A7E61E7A16A5002EAF2F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D70A7E51E7A16A5002EAF2F /* Assets.xcassets */; };
 		6D70A7E91E7A16A6002EAF2F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D70A7E71E7A16A6002EAF2F /* LaunchScreen.storyboard */; };
 		6D70A7F41E7A16A8002EAF2F /* HHExtendFeaturePannalViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D70A7F31E7A16A8002EAF2F /* HHExtendFeaturePannalViewTests.m */; };
+		6D70A8151E7A36EC002EAF2F /* HHExtendFeaturePannalViews.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D70A8141E7A36EC002EAF2F /* HHExtendFeaturePannalViews.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 		6D70A7EF1E7A16A7002EAF2F /* HHExtendFeaturePannalViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HHExtendFeaturePannalViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D70A7F31E7A16A8002EAF2F /* HHExtendFeaturePannalViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HHExtendFeaturePannalViewTests.m; sourceTree = "<group>"; };
 		6D70A7F51E7A16A8002EAF2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6D70A8131E7A36EC002EAF2F /* HHExtendFeaturePannalViews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HHExtendFeaturePannalViews.h; sourceTree = "<group>"; };
+		6D70A8141E7A36EC002EAF2F /* HHExtendFeaturePannalViews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHExtendFeaturePannalViews.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +84,7 @@
 		6D70A7D81E7A16A3002EAF2F /* HHExtendFeaturePannalView */ = {
 			isa = PBXGroup;
 			children = (
+				6D70A8121E7A36BB002EAF2F /* HHExtendView */,
 				6D70A7DC1E7A16A4002EAF2F /* AppDelegate.h */,
 				6D70A7DD1E7A16A4002EAF2F /* AppDelegate.m */,
 				6D70A7DF1E7A16A4002EAF2F /* ViewController.h */,
@@ -109,6 +113,15 @@
 				6D70A7F51E7A16A8002EAF2F /* Info.plist */,
 			);
 			path = HHExtendFeaturePannalViewTests;
+			sourceTree = "<group>";
+		};
+		6D70A8121E7A36BB002EAF2F /* HHExtendView */ = {
+			isa = PBXGroup;
+			children = (
+				6D70A8131E7A36EC002EAF2F /* HHExtendFeaturePannalViews.h */,
+				6D70A8141E7A36EC002EAF2F /* HHExtendFeaturePannalViews.m */,
+			);
+			path = HHExtendView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,6 +231,7 @@
 				6D70A7E11E7A16A5002EAF2F /* ViewController.m in Sources */,
 				6D70A7DE1E7A16A4002EAF2F /* AppDelegate.m in Sources */,
 				6D70A7DB1E7A16A4002EAF2F /* main.m in Sources */,
+				6D70A8151E7A36EC002EAF2F /* HHExtendFeaturePannalViews.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,6 +432,7 @@
 				6D70A7FA1E7A16A8002EAF2F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6D70A7FB1E7A16A8002EAF2F /* Build configuration list for PBXNativeTarget "HHExtendFeaturePannalViewTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +441,7 @@
 				6D70A7FD1E7A16A8002EAF2F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
