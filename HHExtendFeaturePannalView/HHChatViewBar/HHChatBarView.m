@@ -14,7 +14,7 @@ static NSString *const KHHChatBarViewLog = @"hosten_robotChat HHChatBarView";
 #define KViewHeight  self.frame.size.height
 #define KCellHeight 30.0f
 #define WEAKSELF __weak __typeof(&*self)weakSelf = self;
-#define Kmargin 1//所有控件之间的距离
+#define Kmargin 2//所有控件之间的距离
 #define KHHChatBarViewScreenScale SCREEN_WIDTH/375
 @interface HHChatBarView ()
 
@@ -74,11 +74,12 @@ static NSString *const KHHChatBarViewLog = @"hosten_robotChat HHChatBarView";
     }
 //完成右侧菜单按钮父view的初始化和布局
     UIView *rightBtnView = [[UIView alloc]init];
-    CGFloat contentViewX = CGRectGetMaxX(self.leftContaintsView.frame)+Kmargin;
-    CGFloat contetViewWid = kScreenSize.width - contentViewX-2;
-    rightBtnView.frame = CGRectMake(contentViewX, Kmargin, contetViewWid, self.frame.size.height-3);
+    CGFloat contentViewX = CGRectGetMaxX(self.leftContaintsView.frame);
+    CGFloat contetViewWid = kScreenSize.width - contentViewX;
+    rightBtnView.frame = CGRectMake(contentViewX,0, contetViewWid, self.frame.size.height);
     self.rightSubButtonView = rightBtnView;
     [self addSubview:rightBtnView];
+    self.rightSubButtonView.backgroundColor = [UIColor redColor];
 //通过代理方法 拿到需要添加的子控件数
     NSInteger count = 1;
     if (self.chatDelegate && [self.chatDelegate respondsToSelector:@selector(numberOfSectionWithchatBar:)]) {
@@ -86,8 +87,8 @@ static NSString *const KHHChatBarViewLog = @"hosten_robotChat HHChatBarView";
 //        NSLog(@"%@ numberOfSectionWithchatBar 获取到字view的个数:%ld  \n",KHHChatBarViewLog,count);
     }
     self.count = count;
-    CGFloat itemWidth = (contetViewWid-Kmargin)/count;
-    CGFloat itemY = 1;
+    CGFloat itemWidth = (contetViewWid-(count+1)*Kmargin)/count;
+    CGFloat itemY = Kmargin;
 
     UIButton * item;
     for (NSInteger i = 0; i < count; i++) {
@@ -111,7 +112,6 @@ static NSString *const KHHChatBarViewLog = @"hosten_robotChat HHChatBarView";
                NSArray *titileArray = nil;
         if (self.chatDelegate && [self.chatDelegate respondsToSelector:@selector(chatBar:subPopViewTitleOfRowWithIndexPath:)]) {
             titileArray = [self.chatDelegate  chatBar:self subPopViewTitleOfRowWithIndexPath:[NSIndexPath indexPathForRow:0 inSection:i]];
-//            NSLog(@"%@ subPopViewTitleOfRowWithIndexPath:%@ \n",KHHChatBarViewLog,titileArray);
             if (titileArray.count > 0) {//如果有子菜单 则显示菜单图标
                 [item setImage:[UIImage imageNamed:@"bubble_menu"] forState:UIControlStateNormal];
                 
@@ -121,9 +121,9 @@ static NSString *const KHHChatBarViewLog = @"hosten_robotChat HHChatBarView";
         [item addTarget:self action:@selector(buttonClickWithChatItemView:) forControlEvents:UIControlEventTouchUpInside];
         item.tag = 2016819+i+1;//+1是为了便于区分是不是第一次弹出二级菜单
 
-        CGFloat itemX = i * (itemWidth + Kmargin);
-        item.frame = CGRectMake(itemX, itemY, itemWidth, self.rightSubButtonView.frame.size.height);
-//        item.backgroundColor = [UIColor grayColor];
+        CGFloat itemX = i * (itemWidth + Kmargin)+Kmargin;
+        item.frame = CGRectMake(itemX, itemY, itemWidth, self.rightSubButtonView.frame.size.height-2*Kmargin);
+        item.backgroundColor = [UIColor whiteColor];
     }
     [self bringSubviewToFront:self.leftContaintsView];
 }
@@ -171,8 +171,10 @@ static NSString *const KHHChatBarViewLog = @"hosten_robotChat HHChatBarView";
         //添加二级菜单
         [self addPopViewOnSuperView:self.superview frame:CGRectMake(x,y,width,KCellHeight) withSection:section];
     }
-    self.popView.cellColor = sender.backgroundColor;
-    self.popView.backgroundColor = self.backgroundColor;
+//    self.popView.cellColor = sender.backgroundColor;
+//    self.popView.cellColor = [UIColor redColor];
+//    self.popView.backgroundColor = self.backgroundColor;
+    self.popView.backgroundColor = [UIColor redColor];
 }
 
 /**

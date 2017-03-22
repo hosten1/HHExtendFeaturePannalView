@@ -16,7 +16,6 @@ typedef void(^indexCallBack)(NSIndexPath *index);
 -(Boolean)hideView;
 -(Boolean)showView;
 
-@property (assign,nonatomic) CGFloat cellHeight;
 @property (copy,nonatomic) NSArray *titleArray;
 @property (assign,nonatomic) NSInteger indexValue;
 @property (strong,nonatomic) UIColor *cellColor;

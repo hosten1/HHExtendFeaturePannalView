@@ -11,7 +11,8 @@
 #define KcellMargin 2
 
 @interface LDChatPopupView ()
-
+@property (assign,nonatomic) CGFloat cellHeight;
+@property (assign,nonatomic) CGFloat viewHeight;
 @end
 
 @implementation LDChatPopupView
@@ -20,15 +21,15 @@
     if (self == [super initWithFrame:frame]) {
         NSAssert(titleArray==nil||titleArray.count!=0, @"子标题数组为空");
         _titleArray = titleArray;
-        self.cellHeight = frame.size.height;
-        self.frame = CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, KcellMargin+(self.cellHeight+KcellMargin)*titleArray.count);
+        _cellHeight = frame.size.height;
+        self.frame = frame;
         [self initPopupView];
     }
     return self;
 }
 -(void)initPopupView{
     UIButton *cellView = nil;
-    
+    CGFloat cellWidth;
     for (NSInteger i = 0; i < self.titleArray.count; i++) {
         cellView = [UIButton buttonWithType:UIButtonTypeCustom];
         [cellView setBackgroundColor:[UIColor whiteColor]];
@@ -39,8 +40,12 @@
         cellView.tag = 20161100 + i;
         [cellView addTarget:self action:@selector(popSelectButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         CGFloat cellY = KcellMargin+(self.cellHeight+KcellMargin)*i;
-        cellView.frame = CGRectMake(KcellMargin, cellY, self.bounds.size.width-KcellMargin*2,self.cellHeight );
+        cellWidth = self.frame.size.width-KcellMargin*2;
+        _viewHeight = cellY;
+        cellView.frame = CGRectMake(KcellMargin, cellY, cellWidth,self.cellHeight);
     }
+    _viewHeight = self.viewHeight+self.cellHeight+KcellMargin;
+    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width,self.viewHeight);
 }
 -(void)popSelectButtonClick:(UIButton*)sender{
     NSInteger indexValue = sender.tag%10;

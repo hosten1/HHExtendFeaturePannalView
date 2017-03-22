@@ -50,7 +50,7 @@ static NSInteger KHeaderCollectionViewHeight = 150;
 }
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     HHPannalCollectionViewCell * cell  = [collectionView dequeueReusableCellWithReuseIdentifier:KPannalViewCellID forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:1];
+//    cell.backgroundColor = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:1];
 //    [cell setImage:[UIImage imageNamed:@"portrait@2x"] title:[NSString stringWithFormat:@"%ld__%ld",indexPath.section,indexPath.row]];
     HHPannalModel *model = self.items[indexPath.row];
     if (model) {
