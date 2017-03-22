@@ -8,7 +8,7 @@
 
 #import "HHExtendFeaturePannalViews.h"
 #import "HHPannalConllectionView.h"
-
+#import "HHPannalModel.h"
 @interface HHExtendFeaturePannalViews ()<UIScrollViewDelegate>
 @property(nonatomic, strong) UIScrollView *scrowllView;
 @property(nonatomic, strong) UIPageControl *pageConteol;
@@ -22,7 +22,10 @@
     scrollView.frame = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height);
     //    scrollView.backgroundColor = [UIColor redColor];
   
-    self.viewCount = 2;
+//    self.viewCount = 2;
+    if (self.delegate&&[self.delegate respondsToSelector:@selector(numberOfSectionWithextendPannalView:)]) {
+        _viewCount = [self.delegate numberOfSectionWithextendPannalView:self];
+    }
     scrollView.contentSize = CGSizeMake(self.bounds.size.width * self.viewCount , self.bounds.size.height);
     
     scrollView.tag = 101;
@@ -37,10 +40,19 @@
     
    HHPannalConllectionView *subView = [[HHPannalConllectionView alloc]initWithFrame:CGRectMake(0,0,self.bounds.size.width * self.viewCount , self.bounds.size.height)];
     self.subView = subView;
-    for (NSInteger i = 0 ; i < 2; i ++) {
-        //        NSLog(@"sub:%ld",i);
+
+    for (NSInteger i = 0 ; i < self.viewCount; i ++) {
         CGFloat subX = self.bounds.size.width*i;
+        
         [subView setupCollectionVeiwWithFram:CGRectMake(subX, 0, self.bounds.size.width, self.bounds.size.height) collectionKey:[NSString stringWithFormat:@"%ld",i]];
+        if (self.delegate&&[self.delegate respondsToSelector:@selector(extendPannalView:itemsOfRowWithIndexPath:)]) {
+          subView.items =  [self.delegate extendPannalView:self itemsOfRowWithIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+        }
+        subView.pannalCellCallBack = ^(NSIndexPath *index){
+            if (self.delegate&&[self.delegate respondsToSelector:@selector(extendPannalView:didSelectIndex:)]) {
+                [self.delegate extendPannalView:self didSelectIndex:index];
+            }
+        };
     }
     [scrollView addSubview:subView];
     CGFloat pageCW= 60;

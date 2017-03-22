@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "HHPannalModel.h"
 @interface HHPannalCollectionViewCell : UICollectionViewCell
 
-- (void)setImage:(UIImage*)img title:(NSString*)title;
+@property(nonatomic, strong) HHPannalModel *pannalModel;
 @end

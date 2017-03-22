@@ -9,13 +9,15 @@
 #import "ViewController.h"
 #import "HHExtendFeaturePannalViews.h"
 #import "HHChatBarView.h"
+#import "HHPannalModel.h"
 #define kChatBatHeight 45
 
-@interface ViewController ()<HHChatBarDelegate>
+@interface ViewController ()<HHChatBarDelegate,HHExtendFeaturePannalViewsDelegate>
 @property(nonatomic, strong) HHExtendFeaturePannalViews *pannalViews;
 @property(nonatomic,strong)HHChatBarView *chatBar;
 @property(nonatomic, strong) NSArray *oneTitleArray;
 @property(nonatomic, strong) NSArray *secondTitleArray;
+@property(nonatomic,strong)NSMutableArray*items;
 
 @end
 
@@ -23,19 +25,27 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor darkGrayColor];
+    _items = [NSMutableArray array];
+    HHPannalModel *model;
+    for (NSInteger i = 0; i < 8; i++) {
+        model = [[HHPannalModel alloc]initWithImg:@"portrait@2x" title:[NSString stringWithFormat:@"测试%ld",i]];
+        [self.items addObject:model];
+    }
     // Do any additional setup after loading the view, typically from a nib.
     _oneTitleArray = @[@"haha",@"测试",@"测试"];
     _secondTitleArray = @[@"二级菜单",@"二级菜单测试",@"二级菜单测试"];
     HHExtendFeaturePannalViews *exView = [[HHExtendFeaturePannalViews alloc]init];
     exView.bounds = CGRectMake(0, 0, self.view.bounds.size.width,250);
     exView.center = self.view.center;
+    exView.delegate = self;
     [exView  setupScrwollView];
     self.pannalViews = exView;
     [self.view addSubview:exView];
     
-     [self setupChatBar];
+    [self setupChatBar];
     self.chatBar.hidden = NO;
-     [self.chatBar setupSubviewItems];
+    [self.chatBar setupSubviewItems];
 }
 
 -(void)setupChatBar{
@@ -64,7 +74,7 @@
        return self.secondTitleArray;
 }
 -(void)chatBar:(HHChatBarView *)charBar didSelectIndex:(NSIndexPath *)indexPath{
-    NSLog(@"ddfalkfdjaslkjfaflasdjfalsjfdalfjk%ld======%ld",indexPath.section,indexPath.row);
+    NSLog(@"\n HHChatBarView   section: %ld======row:%ld",indexPath.section,indexPath.row);
    
 }
 -(void)chatBar:(HHChatBarView *)charBar didClickLeftButton:(UIButton *)sender
@@ -72,7 +82,17 @@
     NSLog(@":");
 
 }
+#pragma mark ---HHExtendFeaturePannalViewsDelegate
+-(NSInteger)numberOfSectionWithextendPannalView:(HHExtendFeaturePannalViews *)extendPannalView{
+    return 3;
+}
+-(NSArray *)extendPannalView:(HHExtendFeaturePannalViews *)extendPannalView itemsOfRowWithIndexPath:(NSIndexPath *)indexPath{
+    return self.items;
+}
 
+-(void)extendPannalView:(HHExtendFeaturePannalViews *)extendPannalView didSelectIndex:(NSIndexPath *)indexPath{
+    NSLog(@"\n HHExtendFeaturePannalViews did select  section:%ld===========>row:%ld",indexPath.section,indexPath.row);
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

@@ -19,10 +19,20 @@
     [super awakeFromNib];
     // Initialization code
 }
-- (void)setImage:(UIImage*)img title:(NSString*)title{
-    if (img&&title) {
-        self.iconImageView.image = img;
-        self.titlelAB.text = title;
+-(void)setPannalModel:(HHPannalModel *)pannalModel{
+    _pannalModel = pannalModel;
+    self.iconImageView.image = [UIImage imageNamed:pannalModel.imgName];
+    if ([pannalModel.title isEqualToString:@""]||!pannalModel.title) {
+        self.titlelAB.hidden = YES;
+    }else{
+         self.titlelAB.hidden = NO;
+         self.titlelAB.text = pannalModel.title;
     }
 }
+//- (void)setImage:(UIImage*)img title:(NSString*)title{
+//    if (img&&title) {
+//        self.iconImageView.image = img;
+//        self.titlelAB.text = title;
+//    }
+//}
 @end

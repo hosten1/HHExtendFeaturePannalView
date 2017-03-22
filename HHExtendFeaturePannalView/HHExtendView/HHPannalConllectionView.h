@@ -8,12 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-static 
 typedef void(^indexCallBack)(NSIndexPath *index);
+
 @interface HHPannalConllectionView : UIView
 
-@property (assign,nonatomic) NSInteger indexValue;
-@property (copy,nonatomic) indexCallBack tableViewCallBack;
-@property (copy,nonatomic) NSDictionary *items;
+@property (copy,nonatomic) indexCallBack pannalCellCallBack;
+@property (copy,nonatomic) NSArray *items;
 - (void)setupCollectionVeiwWithFram:(CGRect)subFrame collectionKey:(NSString*)key;
 @end
