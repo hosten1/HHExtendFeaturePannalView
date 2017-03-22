@@ -8,8 +8,14 @@
 
 #import "ViewController.h"
 #import "HHExtendFeaturePannalViews.h"
-@interface ViewController ()
+#import "HHChatBarView.h"
+#define kChatBatHeight 45
+
+@interface ViewController ()<HHChatBarDelegate>
 @property(nonatomic, strong) HHExtendFeaturePannalViews *pannalViews;
+@property(nonatomic,strong)HHChatBarView *chatBar;
+@property(nonatomic, strong) NSArray *oneTitleArray;
+@property(nonatomic, strong) NSArray *secondTitleArray;
 
 @end
 
@@ -18,14 +24,54 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    _oneTitleArray = @[@"haha",@"测试",@"测试"];
+    _secondTitleArray = @[@"二级菜单",@"二级菜单测试",@"二级菜单测试"];
     HHExtendFeaturePannalViews *exView = [[HHExtendFeaturePannalViews alloc]init];
     exView.bounds = CGRectMake(0, 0, self.view.bounds.size.width,250);
     exView.center = self.view.center;
     [exView  setupScrwollView];
     self.pannalViews = exView;
     [self.view addSubview:exView];
+    
+     [self setupChatBar];
+    self.chatBar.hidden = NO;
+     [self.chatBar setupSubviewItems];
 }
 
+-(void)setupChatBar{
+    if (self.chatBar) {
+        [self.chatBar removeFromSuperview];
+        self.chatBar = nil;
+    }
+    HHChatBarView *chat = [[HHChatBarView alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height-kChatBatHeight, [UIScreen mainScreen].bounds.size.width, kChatBatHeight)];
+    chat.leftBtn.alpha = 1.0f;
+    chat.chatDelegate = self;
+    chat.backgroundColor = [UIColor whiteColor];
+    _chatBar = chat;
+    [self.view addSubview:chat];
+}
+#pragma mark  --HHChatBardelegate
+-(NSInteger)numberOfSectionWithchatBar:(HHChatBarView *)charBar{
+    
+    //    NSLog(@"%@ numberOfSectionWithchatBar: %@  \n",KLDRobotChatVCLog,arr);
+    return self.oneTitleArray.count;
+}
+-(NSString*)chatBar:(HHChatBarView *)charBar sectionTitleWithIndexPath:(NSIndexPath *)indexPath{
+
+    return self.oneTitleArray[indexPath.section];
+}
+-(NSArray*)chatBar:(HHChatBarView *)charBar subPopViewTitleOfRowWithIndexPath:(NSIndexPath *)indexPath{
+       return self.secondTitleArray;
+}
+-(void)chatBar:(HHChatBarView *)charBar didSelectIndex:(NSIndexPath *)indexPath{
+    NSLog(@"ddfalkfdjaslkjfaflasdjfalsjfdalfjk%ld======%ld",indexPath.section,indexPath.row);
+   
+}
+-(void)chatBar:(HHChatBarView *)charBar didClickLeftButton:(UIButton *)sender
+{
+    NSLog(@":");
+
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
