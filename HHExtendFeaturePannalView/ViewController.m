@@ -25,7 +25,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor darkGrayColor];
+    self.view.backgroundColor = [UIColor whiteColor];
     _items = [NSMutableArray array];
     HHPannalModel *model;
     for (NSInteger i = 0; i < 8; i++) {
@@ -34,7 +34,7 @@
     }
     // Do any additional setup after loading the view, typically from a nib.
     _oneTitleArray = @[@"haha",@"测试",@"测试"];
-    _secondTitleArray = @[@"二级菜单",@"二级菜单测试",@"二级菜单测试"];
+    _secondTitleArray = @[@"二级菜单",@"二级测试",@"二级测试"];
     HHExtendFeaturePannalViews *exView = [[HHExtendFeaturePannalViews alloc]init];
     exView.bounds = CGRectMake(0, 0, self.view.bounds.size.width,250);
     exView.center = self.view.center;

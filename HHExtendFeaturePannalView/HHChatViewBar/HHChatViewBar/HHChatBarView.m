@@ -12,9 +12,9 @@ static NSString *const KHHChatBarViewLog = @"hosten_robotChat HHChatBarView";
 
 #define kScreenSize [UIScreen mainScreen].bounds.size
 #define KViewHeight  self.frame.size.height
-#define KCellHeight 30.0f
+#define KCellHeight 40.0f
 #define WEAKSELF __weak __typeof(&*self)weakSelf = self;
-#define Kmargin 2//所有控件之间的距离
+#define Kmargin 1//所有控件之间的距离
 #define KHHChatBarViewScreenScale SCREEN_WIDTH/375
 @interface HHChatBarView ()
 
@@ -56,7 +56,6 @@ static NSString *const KHHChatBarViewLog = @"hosten_robotChat HHChatBarView";
     UIView *leftContaintsView = [[UIView alloc]init];
     [self addSubview:leftContaintsView];
     self.leftContaintsView = leftContaintsView;
-    self.leftContaintsView.backgroundColor = [UIColor redColor];
     UIButton *leftButton = [[UIButton alloc]init];
     self.leftBtn = leftButton;
     [leftContaintsView addSubview:leftButton];
@@ -70,7 +69,7 @@ static NSString *const KHHChatBarViewLog = @"hosten_robotChat HHChatBarView";
 
 }
 -(void)setupSubviewItems{
-    self.backgroundColor = [UIColor darkGrayColor];
+    self.backgroundColor = [UIColor colorWithRed:235/255.0f green:235/255.0f blue:235/255.0f alpha:1.0f];
     if (self.rightSubButtonView) {
         [self.rightSubButtonView removeFromSuperview];
     }
@@ -184,7 +183,7 @@ static NSString *const KHHChatBarViewLog = @"hosten_robotChat HHChatBarView";
             }
             popView = [[LDChatPopupView alloc] initWithFrame:CGRectMake(popFrame.origin.x,[UIScreen mainScreen].bounds.size.height - self.bounds.size.height, popFrame.size.width, popFrame.size.height) titleArray:self.titileArray];
             popView.chatBarHeight = self.bounds.size.height;
-            [UIView animateWithDuration:0.5 animations:^{
+            [UIView animateWithDuration:0.3 animations:^{
                 popView.frame = popFrame;
             } completion:^(BOOL finished) {
       

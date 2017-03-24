@@ -50,6 +50,7 @@
 -(void)layoutSubviews{
     [super layoutSubviews];
     [self updateSubViewFrame];
+    NSLog(@"hhhhhhhhh          layoutSubviews");
 }
 -(void)updateSubViewFrame{
     self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width,self.viewHeight);

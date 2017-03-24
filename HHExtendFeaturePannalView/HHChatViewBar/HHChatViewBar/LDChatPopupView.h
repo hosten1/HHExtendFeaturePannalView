@@ -22,5 +22,5 @@ typedef void(^indexCallBack)(NSIndexPath *index);
 @property(nonatomic, assign) CGFloat chatBarHeight;
 @property (copy,nonatomic) indexCallBack tableViewCallBack;
 
-//-(void)updateSubViewFrame;
+-(void)updateSubViewFrame;
 @end
